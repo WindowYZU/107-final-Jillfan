@@ -13,6 +13,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -36,7 +37,13 @@ public class TaskFrame extends JInternalFrame {
     public TaskFrame() {
         this.setSize(500, 300);
         //Q4: layout 出如圖所示的樣子，
+        JTextField textfield = new JTextField();
+        JTextArea textArea = new JTextArea();
+        this.add(textfield, "North");
+        this.add(textArea, "Center");
         //記得 JTextArea 要放在捲軸裡面 (30%)
+
+        
         ////////////////////////////
         this.setClosable(true);
         this.setResizable(true);
@@ -70,6 +77,13 @@ public class TaskFrame extends JInternalFrame {
                 if (modified) {
                     //Q5: 發現變更，顯示 confirm dialog 詢問是否要儲存 (20%)
                     int ret = -1;
+                    JFrame frame = new JFrame();
+                    //JOptionPane dialog2 = new JOptionPane();
+                    JOptionPane.showConfirmDialog(frame, "yes");
+                    
+                    //JOptionPane.showMessageDialog(dialog2, "Yes");
+                    //JOptionPane dialog  = new JOptionPane();
+                    //JOptionPane.showMessageDialog(frame, "不可以重複");
                     /////////////////////////////////////////////
                     if (ret == JOptionPane.YES_OPTION) {
                         TaskDB.save(getNoteTitle(), getNoteContent());
